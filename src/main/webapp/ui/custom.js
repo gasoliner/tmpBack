@@ -79,29 +79,46 @@ function perPas1() {
         });
 }
 
-function newBookkind() {
-    $("#fm").form("clear");
-    $("#BookkindDialog").dialog("open").dialog("setTitle","新建");
-    url = "/bookkind/addition";
+function showAttractionPic(id) {
+    $("#showAttractionDialog").dialog({
+        title:"查看",
+        width: 550,
+        height: 550,
+        closed: false,
+        cache: false,
+        modal: true
+    });
+    $("#att_img").attr("src","/attraction/img/"+id);
+
 }
-function editBookkind() {
+
+function addAttractionOption(aid) {
+
+}
+
+function newRegion() {
+    $("#fm").form("clear");
+    $("#RegionDialog").dialog("open").dialog("setTitle","新建");
+    url = "/region/addition";
+}
+function editRegion() {
     var row = $("#dg").datagrid("getSelected");
     if (row){
-        $("#BookkindDialog").dialog("open").dialog("setTitle","编辑");
+        $("#RegionDialog").dialog("open").dialog("setTitle","编辑");
         $("#fm").form("load",row);
-        url = "/bookkind/updates/"+row.bkid;
+        url = "/region/updates/"+row.rid;
     }
 }
-function destroyBookkind() {
+function destroyRegion() {
     var row = $("#dg").datagrid("getSelected");
     if (row){
         $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
             if (r){
                 $("#dfm").form("submit",{
-                    url:"/bookkind/deletion/"+row.bkid,
+                    url:"/region/deletion/"+row.rid,
                     success: function (res) {
                         alert(res);
-                        $("#BookkindDialog").dialog("close");
+                        $("#RegionDialog").dialog("close");
                         $("#dg").datagrid("reload")
                     }
                 })
@@ -109,12 +126,53 @@ function destroyBookkind() {
         })
     }
 }
-function saveBookkind() {
+function saveRegion() {
     $("#fm").form("submit",{
         url:url,
         success: function (res) {
             alert(res);
-            $("#BookkindDialog").dialog("close");
+            $("#RegionDialog").dialog("close");
+            $('#dg').datagrid("reload");
+        }
+    })
+}
+
+function newAttraction() {
+    $("#fm").form("clear");
+    $("#AttractionDialog").dialog("open").dialog("setTitle","新建");
+    url = "/attraction/addition";
+}
+function editAttraction() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#AttractionDialog").dialog("open").dialog("setTitle","编辑");
+        $("#fm").form("load",row);
+        url = "/attraction/updates/"+row.aid;
+    }
+}
+function destroyAttraction() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/attraction/deletion/"+row.aid,
+                    success: function (res) {
+                        alert(res);
+                        $("#AttractionDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function saveAttraction() {
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#AttractionDialog").dialog("close");
             $('#dg').datagrid("reload");
         }
     })
