@@ -29,13 +29,7 @@ public class AttractionController {
     @RequestMapping("/attr_option/{id}")
     @ResponseBody
     public String ddlList(@PathVariable Integer id){
-        List<Attraction> list = attractionService.listByRegion(id);
-        StringBuilder attr_options = new StringBuilder();
-        for (Attraction attraction:
-                list) {
-            attr_options.append("<a href = \"#\" onclick=\"addAttractionOption('" + attraction.getAid() + "')\">" + attraction.getName() +"</a> * ");
-        }
-        return attr_options.toString();
+        return JSON.toJSONString(attractionService.listByRegion(id));
     }
 
     @RequestMapping("/list")

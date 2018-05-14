@@ -2,8 +2,8 @@ package cn.tmp.controller;
 
 import cn.tmp.po.DataGrid;
 import cn.tmp.po.Page;
-import cn.tmp.po.Route;
-import cn.tmp.service.RouteService;
+import cn.tmp.po.Hotel;
+import cn.tmp.service.HotelService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,26 +15,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by Ww on 2018/5/12.
  */
 @Controller
-@RequestMapping(value = "/route",produces = {"application/json;charset=UTF-8"} )
-public class RouteController {
+@RequestMapping(value = "/hotel",produces = {"application/json;charset=UTF-8"} )
+public class HotelController {
 
     @Autowired
-    RouteService routeService;
+    HotelService hotelService;
 
     @RequestMapping("/list")
     @ResponseBody
     public String getList(Page page){
         DataGrid dataGrid = new DataGrid();
-        dataGrid.setRows(routeService.vo(routeService.list(page)));
-        dataGrid.setTotal(routeService.count());
+        dataGrid.setRows(hotelService.list(page));
+        dataGrid.setTotal(hotelService.count());
         return JSON.toJSONString(dataGrid);
     }
 
     @RequestMapping("/addition")
     @ResponseBody
-    public String add(Route route) {
+    public String add(Hotel hotel) {
         try {
-            routeService.insert(route);
+            hotelService.insert(hotel);
             return JSON.toJSONString("操作成功");
         } catch (Exception e) {
             return JSON.toJSONString("操作失败");
@@ -43,10 +43,10 @@ public class RouteController {
 
     @RequestMapping("/updates/{id}")
     @ResponseBody
-    public String update(@PathVariable Integer id, Route route) {
-        route.setRtid(id);
+    public String update(@PathVariable Integer id, Hotel hotel) {
+        hotel.setHid(id);
         try {
-            routeService.update(route);
+            hotelService.update(hotel);
             return JSON.toJSONString("操作成功");
         } catch (Exception e) {
             return JSON.toJSONString("操作失败");
@@ -57,7 +57,7 @@ public class RouteController {
     @ResponseBody
     public String deletion(@PathVariable Integer id) {
         try {
-            routeService.delete(id);
+            hotelService.delete(id);
             return JSON.toJSONString("操作成功");
         } catch (Exception e) {
             return JSON.toJSONString("操作失败");

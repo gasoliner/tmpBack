@@ -19,6 +19,14 @@
             <a href="#" class="easyui-linkbutton" onclick="addTab('路线管理','attraction_route')">路线管理</a>
         </div>
     </div>
+    <div title="酒店相关管理" iconCls="icon-man" style="overflow: auto;padding: 10px;">
+        <div class="menu-last">
+            <a href="#" class="easyui-linkbutton" onclick="addTab('酒店管理','hotel_manage')">酒店管理</a>
+        </div>
+        <div class="menu-last">
+            <a href="#" class="easyui-linkbutton" onclick="addTab('房型管理','hotel_kind_manage')">房型管理</a>
+        </div>
+    </div>
     <div title="人员管理" iconCls="icon-man" style="overflow: auto;padding: 10px;">
         <div class="menu-last">
             <a href="#" class="easyui-linkbutton" onclick="addTab('用户列表','userManageUI/userList')">用户列表</a>

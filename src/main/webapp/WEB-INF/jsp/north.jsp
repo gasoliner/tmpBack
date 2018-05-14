@@ -4,7 +4,7 @@
 <head>
 </head>
 <body>
-<div style="text-align: center;font-family: 微软雅黑;font-size: 25px;" >某信息管理系统
+<div style="text-align: center;font-family: 微软雅黑;font-size: 25px;" >旅游管理平台
     <c:if test="${globleUser != null}">
         <span>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;欢迎您，${globleUser.username}&nbsp;&nbsp;

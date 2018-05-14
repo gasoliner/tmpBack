@@ -2,6 +2,7 @@ package cn.tmp.service;
 
 import cn.tmp.po.Page;
 import cn.tmp.po.Route;
+import cn.tmp.vo.VoRoute;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface RouteService {
     int update(Route record);
 
     long count();
+
+    List<VoRoute> vo(List<Route> list);
 }

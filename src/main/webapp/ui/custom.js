@@ -92,10 +92,6 @@ function showAttractionPic(id) {
 
 }
 
-function addAttractionOption(aid) {
-
-}
-
 function newRegion() {
     $("#fm").form("clear");
     $("#RegionDialog").dialog("open").dialog("setTitle","新建");
@@ -173,6 +169,88 @@ function saveAttraction() {
         success: function (res) {
             alert(res);
             $("#AttractionDialog").dialog("close");
+            $('#dg').datagrid("reload");
+        }
+    })
+}
+
+function newRoute() {
+    $("#fm").form("clear");
+    $("#RouteDialog").dialog("open").dialog("setTitle","新建");
+    url = "/route/addition";
+}
+function editRoute() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#RouteDialog").dialog("open").dialog("setTitle","编辑");
+        $("#fm").form("load",row);
+        url = "/route/updates/"+row.rtid;
+    }
+}
+function destroyRoute() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/route/deletion/"+row.rtid,
+                    success: function (res) {
+                        alert(res);
+                        $("#RouteDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function saveRoute() {
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#RouteDialog").dialog("close");
+            $('#dg').datagrid("reload");
+        }
+    })
+}
+
+function newHotel() {
+    $("#fm").form("clear");
+    $("#HotelDialog").dialog("open").dialog("setTitle","新建");
+    url = "/hotel/addition";
+}
+function editHotel() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#HotelDialog").dialog("open").dialog("setTitle","编辑");
+        $("#fm").form("load",row);
+        url = "/hotel/updates/"+row.hid;
+    }
+}
+function destroyHotel() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/hotel/deletion/"+row.hid,
+                    success: function (res) {
+                        alert(res);
+                        $("#HotelDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function saveHotel() {
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#HotelDialog").dialog("close");
             $('#dg').datagrid("reload");
         }
     })

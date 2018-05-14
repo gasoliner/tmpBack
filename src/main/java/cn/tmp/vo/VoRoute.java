@@ -21,6 +21,8 @@ public class VoRoute extends Route {
         this.setVar(route.getVar());
     }
 
+    public VoRoute() {}
+
     public Integer[] getVoAidss() {
         return voAidss;
     }

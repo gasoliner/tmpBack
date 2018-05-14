@@ -51,9 +51,16 @@
         </div>
         <div class="fitem">
             <label>景点</label><div>&nbsp;</div>
-            <div>请选择以下景点：</div>
-            <div id="attraction_option"></div>
-            <input type="text" name="aids" readonly="readonly" class="plainText">
+            <div>请选择以下景点：</div><div>&nbsp;</div>
+            <input id="attraction_Input_Combox" name="temp"
+                   class="easyui-combobox"
+                   data-options="
+                           valueField:'aid',
+                           textField:'name',
+                           width:300" />
+                           <%--url:'${pageContext.request.contextPath}/attraction/attr_option'--%>
+            <div>&nbsp;</div>
+            <input id="aids_Input" type="text" name="aids" readonly="readonly" class="plainText">
         </div>
         <div class="fitem">
             <label>备注</label><div>&nbsp;</div>
@@ -101,9 +108,20 @@
     $(function () {
         $('#region_Input_Combox').combobox({
             onChange: function(){
-                $.get("/attraction/attr_option/" + $("#region_Input_Combox").combobox("getValue"),null,function (data) {
-                    $("#attraction_option").html(data);
-                })
+                $("#attraction_Input_Combox").combobox('reload', "${pageContext.request.contextPath}/attraction/attr_option/"+ $("#region_Input_Combox").combobox("getValue"));
+            }
+        });
+    });
+    $(function () {
+        $('#attraction_Input_Combox').combobox({
+            onChange: function(){
+                var text = $("#aids_Input").val();
+                if(text != null) {
+                    text = text + $("#attraction_Input_Combox").combobox("getValue") +  ",";
+                } else {
+                    text = $("#attraction_Input_Combox").combobox("getValue") +  ",";
+                }
+                $("#aids_Input").val(text);
             }
         });
     });
