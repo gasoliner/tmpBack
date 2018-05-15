@@ -81,14 +81,14 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#HotelDialog').dialog('close')">取消</a>
 </div>
 
-<%--<div id="showHotelDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"--%>
-     <%--closed="true" buttons="#showHotelDialog-buttons">--%>
-    <%--<img id="att_img"/>--%>
-<%--</div>--%>
+<div id="showHotelDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
+     closed="true" buttons="#showHotelDialog-buttons">
+    <img id="att_img"/>
+</div>
 
-<%--<div id="showHotelDialog-buttons">--%>
-    <%--<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:$('#showHotelDialog').dialog('close')">好的</a>--%>
-<%--</div>--%>
+<div id="showHotelDialog-buttons">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:$('#showHotelDialog').dialog('close')">好的</a>
+</div>
 
 <div>
     <form id="dfm" method="post">

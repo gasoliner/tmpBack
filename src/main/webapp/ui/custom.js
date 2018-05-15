@@ -92,6 +92,32 @@ function showAttractionPic(id) {
 
 }
 
+function showHousePic(id) {
+    $("#showHouseDialog").dialog({
+        title:"查看",
+        width: 550,
+        height: 550,
+        closed: false,
+        cache: false,
+        modal: true
+    });
+    $("#att_img").attr("src","/house/img/"+id);
+
+}
+
+function showHotelPic(id) {
+    $("#showHotelDialog").dialog({
+        title:"查看",
+        width: 550,
+        height: 550,
+        closed: false,
+        cache: false,
+        modal: true
+    });
+    $("#att_img").attr("src","/hotel/img/"+id);
+
+}
+
 function newRegion() {
     $("#fm").form("clear");
     $("#RegionDialog").dialog("open").dialog("setTitle","新建");
@@ -255,6 +281,48 @@ function saveHotel() {
         }
     })
 }
+
+function newHouse() {
+    $("#fm").form("clear");
+    $("#HouseDialog").dialog("open").dialog("setTitle","新建");
+    url = "/house/addition";
+}
+function editHouse() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#HouseDialog").dialog("open").dialog("setTitle","编辑");
+        $("#fm").form("load",row);
+        url = "/house/updates/"+row.hoid;
+    }
+}
+function destroyHouse() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/house/deletion/"+row.hoid,
+                    success: function (res) {
+                        alert(res);
+                        $("#HouseDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function saveHouse() {
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#HouseDialog").dialog("close");
+            $('#dg').datagrid("reload");
+        }
+    })
+}
+
 
 function newBook() {
     $("#fm").form("clear");

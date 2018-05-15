@@ -2,6 +2,7 @@ package cn.tmp.service;
 
 import cn.tmp.po.House;
 import cn.tmp.po.Page;
+import cn.tmp.vo.VoHouse;
 
 import java.util.List;
 
@@ -19,4 +20,7 @@ public interface HouseService {
 
     long count();
 
+    List<VoHouse> vo(List<House> list);
+
+    House selectByPrimaryKey(Integer id);
 }

@@ -5,11 +5,13 @@ import cn.tmp.po.Page;
 import cn.tmp.po.Hotel;
 import cn.tmp.po.HotelExample;
 import cn.tmp.service.HotelService;
+import cn.tmp.vo.VoHotel;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -49,5 +51,22 @@ public class HotelServiceImpl implements HotelService {
     public long count() {
         return total;
     }
-    
+
+    @Override
+    public Hotel selectByPrimaryKey(Integer hid) {
+        return hotelMapper.selectByPrimaryKey(hid);
+    }
+
+    @Override
+    public List<VoHotel> vo(List<Hotel> list) {
+        List<VoHotel> list1 = new ArrayList<>();
+        for (Hotel hotel:
+                list) {
+            VoHotel voHotel = new VoHotel(hotel);
+            voHotel.setVoImg("<a href = \"#\" onclick=\"showHotelPic('" + voHotel.getHid() + "')\">查看图片</a>");
+            list1.add(voHotel);
+        }
+        return list1;
+    }
+
 }

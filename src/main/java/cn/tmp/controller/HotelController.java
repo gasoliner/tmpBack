@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * Created by Ww on 2018/5/12.
@@ -37,7 +39,7 @@ public class HotelController {
     @ResponseBody
     public String getList(Page page){
         DataGrid dataGrid = new DataGrid();
-        dataGrid.setRows(hotelService.list(page));
+        dataGrid.setRows(hotelService.vo(hotelService.list(page)));
         dataGrid.setTotal(hotelService.count());
         return JSON.toJSONString(dataGrid);
     }
@@ -47,11 +49,12 @@ public class HotelController {
     public String add(Hotel hotel, @RequestParam("img_file")CommonsMultipartFile file, HttpServletRequest request) {
         try {
             if (file.getSize() > 0) {
-                hotel.setImg(PageUtil.uploadAnnex(request,file,"hotel",hotel.getHid().toString() + "-" + hotel.getName()));
+                hotel.setImg(PageUtil.uploadAnnex(request,file,"hotel",hotel.getName()));
             }
             hotelService.insert(hotel);
             return JSON.toJSONString("操作成功");
         } catch (Exception e) {
+            e.printStackTrace();
             return JSON.toJSONString("操作失败");
         }
     }
@@ -62,7 +65,7 @@ public class HotelController {
         hotel.setHid(id);
         try {
             if (file.getSize() > 0) {
-                hotel.setImg(PageUtil.uploadAnnex(request,file,"hotel",hotel.getHid().toString() + "-" + hotel.getName()));
+                hotel.setImg(PageUtil.uploadAnnex(request,file,"hotel",hotel.getName()));
             }
             hotelService.update(hotel);
             return JSON.toJSONString("操作成功");
@@ -80,6 +83,11 @@ public class HotelController {
         } catch (Exception e) {
             return JSON.toJSONString("操作失败");
         }
+    }
+
+    @RequestMapping("/img/{id}")
+    public void pic(@PathVariable Integer id, HttpServletResponse response) throws IOException {
+        PageUtil.showImg(hotelService.selectByPrimaryKey(id).getImg(),response);
     }
     
 }

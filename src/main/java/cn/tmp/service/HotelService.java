@@ -2,6 +2,7 @@ package cn.tmp.service;
 
 import cn.tmp.po.Page;
 import cn.tmp.po.Hotel;
+import cn.tmp.vo.VoHotel;
 
 import java.util.List;
 
@@ -19,4 +20,7 @@ public interface HotelService {
 
     long count();
 
+    Hotel selectByPrimaryKey(Integer hid);
+
+    List<VoHotel> vo(List<Hotel> list);
 }
