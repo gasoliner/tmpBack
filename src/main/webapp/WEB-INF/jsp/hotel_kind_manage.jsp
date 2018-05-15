@@ -1,16 +1,16 @@
 <%@page pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
-    <title>attraction_manage</title>
+    <title>hotel_kind_manage.jsp</title>
     <jsp:include page="header.jsp"/>
 </head>
 <body>
 <div align="center">
-    <table id="dg" title="景点管理表" class="easyui-datagrid" style="width: 100%;height:auto"
+    <table id="dg" title="酒店房型管理表" class="easyui-datagrid" style="width: 100%;height:auto"
            toolbar="#toolbar"
            fitColumns="true" singleSelect="true" pagination="true"
            data-options="rownumbers:true,
-            url:'/attraction/list',
+            url:'/house/list',
             method:'get',
             pageSize:15,
             pageList:[5,10,15,20,25]">

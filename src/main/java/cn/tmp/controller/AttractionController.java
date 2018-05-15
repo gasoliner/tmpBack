@@ -45,7 +45,7 @@ public class AttractionController {
     @ResponseBody
     public String add(Attraction attraction, @RequestParam("img_file")CommonsMultipartFile file, HttpServletRequest request) {
         try {
-            attraction.setImg(PageUtil.uploadAnnex(request,file,"attraction","images"));
+            attraction.setImg(PageUtil.uploadAnnex(request,file,"attraction",attraction.getAid().toString() +"-" + attraction.getName()));
             attractionService.insert(attraction);
             return JSON.toJSONString("操作成功");
         } catch (Exception e) {

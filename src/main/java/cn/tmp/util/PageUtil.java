@@ -13,9 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by 万洪基 on 2017/3/7.
- */
+
 public class PageUtil {
 
     public static String uploadAnnex(HttpServletRequest request, CommonsMultipartFile file, String model, String model2) {
