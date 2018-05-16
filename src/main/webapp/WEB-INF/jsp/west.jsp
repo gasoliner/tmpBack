@@ -27,6 +27,19 @@
             <a href="#" class="easyui-linkbutton" onclick="addTab('房型管理','hotel_kind_manage')">房型管理</a>
         </div>
     </div>
+    <div title="特产相关管理" iconCls="icon-man" style="overflow: auto;padding: 10px;">
+        <div class="menu-last">
+            <a href="#" class="easyui-linkbutton" onclick="addTab('特产管理','special_manage')">特产管理</a>
+        </div>
+    </div>
+    <div title="订单相关管理" iconCls="icon-man" style="overflow: auto;padding: 10px;">
+        <div class="menu-last">
+            <a href="#" class="easyui-linkbutton" onclick="addTab('特产管理','hotel_manage')">特产管理</a>
+        </div>
+        <div class="menu-last">
+            <a href="#" class="easyui-linkbutton" onclick="addTab('房型管理','hotel_kind_manage')">房型管理</a>
+        </div>
+    </div>
     <div title="人员管理" iconCls="icon-man" style="overflow: auto;padding: 10px;">
         <div class="menu-last">
             <a href="#" class="easyui-linkbutton" onclick="addTab('用户列表','userManageUI/userList')">用户列表</a>

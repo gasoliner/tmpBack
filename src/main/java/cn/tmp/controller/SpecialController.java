@@ -1,9 +1,9 @@
 package cn.tmp.controller;
 
 import cn.tmp.po.DataGrid;
+import cn.tmp.po.Special;
 import cn.tmp.po.Page;
-import cn.tmp.po.Attraction;
-import cn.tmp.service.AttractionService;
+import cn.tmp.service.SpecialService;
 import cn.tmp.util.PageUtil;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,57 +17,50 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
+/**
+ * Created by Ww on 2018/5/12.
+ */
 @Controller
-@RequestMapping(value = "/attraction",produces = {"application/json;charset=UTF-8"} )
-public class AttractionController {
+@RequestMapping(value = "/special",produces = {"application/json;charset=UTF-8"} )
+public class SpecialController {
 
     @Autowired
-    AttractionService attractionService;
-
-    @RequestMapping("/attr_option/{id}")
-    @ResponseBody
-    public String ddlList(@PathVariable Integer id){
-        return JSON.toJSONString(attractionService.listByRegion(id));
-    }
-
-    @RequestMapping("/ddllist")
-    @ResponseBody
-    public String ddlList(Page page){
-        return JSON.toJSONString(attractionService.list(page));
-    }
+    SpecialService specialService;
 
     @RequestMapping("/list")
     @ResponseBody
     public String getList(Page page){
         DataGrid dataGrid = new DataGrid();
-        dataGrid.setRows(attractionService.vo(attractionService.list(page)));
-        dataGrid.setTotal(attractionService.count());
+        dataGrid.setRows(specialService.vo(specialService.list(page)));
+        dataGrid.setTotal(specialService.count());
         return JSON.toJSONString(dataGrid);
     }
 
     @RequestMapping("/addition")
     @ResponseBody
-    public String add(Attraction attraction, @RequestParam("img_file")CommonsMultipartFile file, HttpServletRequest request) {
+    public String add(Special special, @RequestParam("img_file") CommonsMultipartFile file, HttpServletRequest request) {
         try {
-            attraction.setImg(PageUtil.uploadAnnex(request,file,"attraction",attraction.getName()));
-            attractionService.insert(attraction);
+            if (file.getSize() > 0) {
+                special.setImg(PageUtil.uploadAnnex(request,file,"special",special.getName()));
+            }
+            specialService.insert(special);
             return JSON.toJSONString("操作成功");
         } catch (Exception e) {
+            e.printStackTrace();
             return JSON.toJSONString("操作失败");
         }
     }
 
     @RequestMapping("/updates/{id}")
     @ResponseBody
-    public String update(@PathVariable Integer id, Attraction attraction,@RequestParam("img_file")CommonsMultipartFile file, HttpServletRequest request) {
-        attraction.setAid(id);
+    public String update(@PathVariable Integer id, Special special,@RequestParam("img_file")CommonsMultipartFile file, HttpServletRequest request) {
+        special.setSid(id);
         try {
             if (file.getSize() > 0) {
-                attraction.setImg(PageUtil.uploadAnnex(request,file,"attraction",attraction.getName()));
+                special.setImg(PageUtil.uploadAnnex(request,file,"special",special.getName()));
             }
-            attractionService.update(attraction);
+            specialService.update(special);
             return JSON.toJSONString("操作成功");
         } catch (Exception e) {
             return JSON.toJSONString("操作失败");
@@ -78,7 +71,7 @@ public class AttractionController {
     @ResponseBody
     public String deletion(@PathVariable Integer id) {
         try {
-            attractionService.delete(id);
+            specialService.delete(id);
             return JSON.toJSONString("操作成功");
         } catch (Exception e) {
             return JSON.toJSONString("操作失败");
@@ -87,7 +80,7 @@ public class AttractionController {
 
     @RequestMapping("/img/{id}")
     public void pic(@PathVariable Integer id, HttpServletResponse response) throws IOException {
-        PageUtil.showImg(attractionService.selectByPrimaryKey(id).getImg(),response);
+        PageUtil.showImg(specialService.selectByPrimaryKey(id).getImg(),response);
     }
-
+    
 }
