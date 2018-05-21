@@ -1,14 +1,14 @@
 function newUser() {
     $("#fm").form("clear");
-    $("#userDialog").dialog("open").dialog("setTitle","新建");
-    url = "/user/add";
+    $("#UserDialog").dialog("open").dialog("setTitle","新建");
+    url = "/user/addition";
 }
 function editUser() {
     var row = $("#dg").datagrid("getSelected");
     if (row){
-        $("#userDialog").dialog("open").dialog("setTitle","编辑");
+        $("#UserDialog").dialog("open").dialog("setTitle","编辑");
         $("#fm").form("load",row);
-        url = "/user/update?sid="+row.sid;
+        url = "/user/updates/"+row.uid;
     }
 }
 function destroyUser() {
@@ -17,10 +17,10 @@ function destroyUser() {
         $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
             if (r){
                 $("#dfm").form("submit",{
-                    url:"/user/delete?sid="+row.sid,
+                    url:"/user/deletion/"+row.uid,
                     success: function (res) {
                         alert(res);
-                        $("#userDialog").dialog("close");
+                        $("#UserDialog").dialog("close");
                         $("#dg").datagrid("reload")
                     }
                 })
@@ -33,9 +33,15 @@ function saveUser() {
         url:url,
         success: function (res) {
             alert(res);
-            $("#userDialog").dialog("close");
+            $("#UserDialog").dialog("close");
             $('#dg').datagrid("reload");
         }
+    })
+}
+function resetUserPassword(id) {
+    $.post("/user/resetPassword/" + id,null,function (backresult) {
+        alert(backresult);
+        $('#dg').datagrid("reload");
     })
 }
 function subNewUser() {
@@ -67,12 +73,12 @@ function perInf1() {
         });
 }
 function perPas1() {
-    $.post("/manager/password",
+    $.post("/user/password",
         {
-            mid:$("#mid").val(),
+            uid:$("#uid").val(),
             oldpassword:$("#oldpass").val(),
-            newpassword1:$("#newpass1").val(),
-            newpassword2:$("#newpass2").val()
+            newpassword1:$("#newpass").val(),
+            newpassword2:$("#newpass_check").val()
         },
         function (data) {
             alert(data);
@@ -253,6 +259,17 @@ function saveRoute() {
         }
     })
 }
+function showRoute() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#showRouteDialog").dialog("open").dialog("setTitle",row.title);
+        $("#rid_content").html(row.rid);
+        $("#name_content").html(row.name);
+        $("#voRid_content").html(row.voRid);
+        $("#voAids_content").html(row.voAids);
+        $("#var_content").html(row.var);
+    }
+}
 
 function newHotel() {
     $("#fm").form("clear");
@@ -378,29 +395,29 @@ function saveSpecial() {
 }
 
 
-function newBook() {
+function newOrders() {
     $("#fm").form("clear");
-    $("#BookDialog").dialog("open").dialog("setTitle","新建");
-    url = "/book/addition";
+    $("#OrdersDialog").dialog("open").dialog("setTitle","新建");
+    url = "/orders/addition";
 }
-function editBook() {
+function editOrders() {
     var row = $("#dg").datagrid("getSelected");
     if (row){
-        $("#BookDialog").dialog("open").dialog("setTitle","编辑");
+        $("#OrdersDialog").dialog("open").dialog("setTitle","编辑");
         $("#fm").form("load",row);
-        url = "/book/updates/"+row.id;
+        url = "/orders/updates/"+row.oid;
     }
 }
-function destroyBook() {
+function destroyOrders() {
     var row = $("#dg").datagrid("getSelected");
     if (row){
         $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
             if (r){
                 $("#dfm").form("submit",{
-                    url:"/book/deletion/"+row.id,
+                    url:"/orders/deletion/"+row.oid,
                     success: function (res) {
                         alert(res);
-                        $("#BookDialog").dialog("close");
+                        $("#OrdersDialog").dialog("close");
                         $("#dg").datagrid("reload")
                     }
                 })
@@ -408,122 +425,80 @@ function destroyBook() {
         })
     }
 }
-function saveBook() {
+function saveOrders() {
     $("#fm").form("submit",{
         url:url,
         success: function (res) {
             alert(res);
-            $("#BookDialog").dialog("close");
+            $("#OrdersDialog").dialog("close");
             $('#dg').datagrid("reload");
         }
     })
 }
-function showBook() {
+function confirmOrder(id) {
+    $.post("/orders/confirm/" + id,
+        null,
+        function (data) {
+            alert(data);
+            $('#dg').datagrid("reload");
+        });
+}
+function showOrders() {
     var row = $("#dg").datagrid("getSelected");
     if (row){
-        $("#showBookDialog").dialog("open").dialog("setTitle",row.title);
-        $("#bookname_content").html(row.bookname);
-        $("#author_content").html(row.author);
-        $("#publishyear_content").html(row.publishyear);
-        $("#pages_content").html(row.pages);
-        $("#price_content").html(row.price);
-        $("#score_content").html(row.score);
-        $("#content_content").html(row.content);
-        $("#author_info_content").html(row.authorinfo);
+        $("#showOrdersDialog").dialog("open").dialog("setTitle",row.title);
+        $("#name_content").html(row.name);
+        $("#time_content").html(row.time);
+        $("#state_content").html(row.state);
+        $("#sum_content").html(row.sum);
+        $("#var_content").html(row.var);
     }
 }
 
-function newFile() {
-    $("#fm").form("clear");
-    $("#fileDialog").dialog("open").dialog("setTitle","新建");
-    url = "/classsFile/add";
-}
-function editFile() {
-    var row = $("#dg").datagrid("getSelected");
-    if (row){
-        $("#fileDialog").dialog("open").dialog("setTitle","编辑");
-        $("#fm").form("load",row);
-        url = "/classsFile/update?cfid="+row.cfid;
-    }
-}
-function destroyFile() {
-    var row = $("#dg").datagrid("getSelected");
-    if (row){
-        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
-            if (r){
-                $("#dfm").form("submit",{
-                    url:"/classsFile/delete?cfid="+row.cfid,
-                    success: function (res) {
-                        alert(res);
-                        $("#fileDialog").dialog("close");
-                        $("#dg").datagrid("reload")
-                    }
-                })
-            }
-        })
-    }
-}
-function saveFile() {
-    $("#fm").form("submit",{
-        url:url,
-        success: function (res) {
-            alert(res);
-            $("#fileDialog").dialog("close");
-            $('#dg').datagrid("reload");
-        }
-    })
-}
-
-function newAchievement() {
-    $("#fm").form("clear");
-    $("#achievementDialog").dialog("open").dialog("setTitle","新建");
-    url = "/achievement/add";
-}
-function editAchievement() {
-    var row = $("#dg").datagrid("getSelected");
-    if (row){
-        $("#achievementDialog").dialog("open").dialog("setTitle","编辑");
-        $("#fm").form("load",row);
-        url = "/achievement/update?aid="+row.aid;
-    }
-}
-function destroyAchievement() {
-    var row = $("#dg").datagrid("getSelected");
-    if (row){
-        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
-            if (r){
-                $("#dfm").form("submit",{
-                    url:"/achievement/delete?aid="+row.aid,
-                    success: function (res) {
-                        alert(res);
-                        $("#achievementDialog").dialog("close");
-                        $("#dg").datagrid("reload")
-                    }
-                })
-            }
-        })
-    }
-}
-function saveAchievement() {
-    $("#fm").form("submit",{
-        url:url,
-        success: function (res) {
-            alert(res);
-            $("#achievementDialog").dialog("close");
-            $('#dg').datagrid("reload");
-        }
-    })
-}
 function login() {
     $("#fm").form("submit",{
-        url:"/user/signin",
+        url:"/login/login",
         success:function (res) {
             window.location.href = res;
         }
     })
+
+    $("#fm").submit();
 }
 function logout() {
-    $.get("/user/signout",null,function (res) {
-        window.location.href = "/UI/sign";
+    $.get("/login/logout",null,function (res) {
+        window.location.href = "/login_ui";
     })
+}
+
+
+function newConsumer() {
+    $("#fm").form("clear");
+    $("#ConsumerDialog").dialog("open").dialog("setTitle","新建");
+    url = "/consumer/addition";
+}
+function editConsumer() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#ConsumerDialog").dialog("open").dialog("setTitle","编辑");
+        $("#fm").form("load",row);
+        url = "/consumer/updates/"+row.cid;
+    }
+}
+function destroyConsumer() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/consumer/deletion/"+row.cid,
+                    success: function (res) {
+                        alert(res);
+                        $("#ConsumerDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
 }

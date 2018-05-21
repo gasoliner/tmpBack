@@ -73,29 +73,23 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#RouteDialog').dialog('close')">取消</a>
 </div>
 
-<%--<div id="showBookDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"--%>
-     <%--closed="true" buttons="#showBookDialog-buttons">--%>
-    <%--<h5>书名：</h5>--%>
-    <%--<div id="bookname_content"></div>--%>
-    <%--<h5>作者：</h5>--%>
-    <%--<div id="author_content"></div>--%>
-    <%--<h5>出版日期：</h5>--%>
-    <%--<div id="publishyear_content"></div>--%>
-    <%--<h5>页数：</h5>--%>
-    <%--<div id="pages_content"></div>--%>
-    <%--<h5>价格：</h5>--%>
-    <%--<div id="price_content"></div>--%>
-    <%--<h5>豆瓣评分：</h5>--%>
-    <%--<div id="score_content"></div>--%>
-    <%--<h5>内容简介：</h5>--%>
-    <%--<div id="content_content"></div>--%>
-    <%--<h5>作者简介：</h5>--%>
-    <%--<div id="author_info_content"></div>--%>
-<%--</div>--%>
+<div id="showRouteDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
+     closed="true" buttons="#showRouteDialog-buttons">
+    <h5>路线编号：</h5>
+    <div id="rid_content"></div>
+    <h5>路线名称：</h5>
+    <div id="name_content"></div>
+    <h5>地区：</h5>
+    <div id="voRid_content"></div>
+    <h5>路线内容：</h5>
+    <div id="voAids_content"></div>
+    <h5>备注：</h5>
+    <div id="var_content"></div>
+</div>
 
-<%--<div id="showBookDialog-buttons">--%>
-    <%--<a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:$('#showBookDialog').dialog('close')">好的</a>--%>
-<%--</div>--%>
+<div id="showRouteDialog-buttons">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="javascript:$('#showRouteDialog').dialog('close')">好的</a>
+</div>
 
 <div>
     <form id="dfm" method="post">

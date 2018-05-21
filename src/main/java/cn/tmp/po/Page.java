@@ -1,8 +1,6 @@
 package cn.tmp.po;
 
-/**
- * Created by wanzhenghang on 2017/5/13.
- */
+
 public class Page {
 
     int page;
