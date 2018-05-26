@@ -451,6 +451,7 @@ function showOrders() {
         $("#time_content").html(row.time);
         $("#state_content").html(row.state);
         $("#sum_content").html(row.sum);
+        $("#voReceive_content").html(row.voReceive);
         $("#var_content").html(row.var);
     }
 }

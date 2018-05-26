@@ -21,14 +21,13 @@
             <th field="time" width="50">订单创建时间</th>
             <th field="state" width="50">订单状态</th>
             <th field="sum" width="50">订单金额(元)</th>
+            <th field="voCid" width="50">订单创建者</th>
             <th field="var" width="50">订单备注</th>
         </tr>
         </thead>
     </table>
 </div>
 <div id="toolbar">
-    <%--<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newOrders()">新建</a>--%>
-    <%--<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editOrders()">编辑</a>--%>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyOrders()">删除</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="showOrders()">查看详细信息</a>
 </div>
@@ -45,6 +44,8 @@
     <div id="state_content"></div>
     <h5>订单金额(元)：</h5>
     <div id="sum_content"></div>
+    <h5>订单创建者：</h5>
+    <div id="voReceive_content"></div>
     <h5>订单备注：</h5>
     <div id="var_content"></div>
 </div>
