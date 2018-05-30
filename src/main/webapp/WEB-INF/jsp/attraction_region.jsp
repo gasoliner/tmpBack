@@ -28,15 +28,6 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editRegion()">编辑</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyRegion()">删除</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="showRegion()">查看详细信息</a>
-    <%--<label>按年度查询</label>--%>
-    <%--<input id="Book_searchInput"--%>
-    <%--name="year"--%>
-    <%--class="easyui-combobox"--%>
-    <%--data-options="--%>
-    <%--valueField:'ddlcode',--%>
-    <%--textField:'ddlname',--%>
-    <%--width:300,--%>
-    <%--url:'${pageContext.request.contextPath}/systemddl/list/year'" />--%>
 </div>
 <div id="RegionDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
      closed="true" buttons="#Region-buttons">
