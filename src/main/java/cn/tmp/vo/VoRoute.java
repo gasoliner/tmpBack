@@ -2,9 +2,7 @@ package cn.tmp.vo;
 
 import cn.tmp.po.Route;
 
-/**
- * Created by Ww on 2018/5/14.
- */
+
 public class VoRoute extends Route {
 
     private String voRid;

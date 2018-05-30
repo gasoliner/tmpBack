@@ -6,9 +6,7 @@ import cn.tmp.vo.VoHotel;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface HotelService {
     List<Hotel> list(Page page);
 

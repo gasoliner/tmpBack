@@ -6,9 +6,7 @@ import cn.tmp.vo.VoHouse;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface HouseService {
     List<House> list(Page page);
 

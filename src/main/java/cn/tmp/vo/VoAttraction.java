@@ -2,9 +2,7 @@ package cn.tmp.vo;
 
 import cn.tmp.po.Attraction;
 
-/**
- * Created by Ww on 2018/5/14.
- */
+
 public class VoAttraction extends Attraction {
 
     private String voRid;

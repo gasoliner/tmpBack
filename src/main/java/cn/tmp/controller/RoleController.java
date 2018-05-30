@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Created by Ww on 2018/5/12.
- */
+
 @Controller
 @RequestMapping(value = "/role",produces = {"application/json;charset=UTF-8"} )
 public class RoleController {

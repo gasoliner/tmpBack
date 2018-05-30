@@ -47,8 +47,6 @@
         <jsp:include page="south.jsp"/>
     </div>
 </div>
-<div id="noticeDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
-     closed="true">
-</div>
+
 </body>
 </html>

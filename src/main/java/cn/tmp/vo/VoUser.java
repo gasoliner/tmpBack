@@ -2,9 +2,7 @@ package cn.tmp.vo;
 
 import cn.tmp.po.User;
 
-/**
- * Created by Ww on 2018/5/21.
- */
+
 public class VoUser extends User {
 
     private String voPassword;

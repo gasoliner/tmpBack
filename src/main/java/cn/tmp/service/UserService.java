@@ -6,9 +6,7 @@ import cn.tmp.vo.VoUser;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface UserService {
     List<User> list(Page page);
     int insert(User record);

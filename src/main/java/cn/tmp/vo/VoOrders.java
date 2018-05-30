@@ -2,9 +2,7 @@ package cn.tmp.vo;
 
 import cn.tmp.po.Orders;
 
-/**
- * Created by Ww on 2018/5/20.
- */
+
 public class VoOrders extends Orders {
 
     private String voPublish;

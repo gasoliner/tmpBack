@@ -18,9 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by Ww on 2018/5/12.
- */
+
 @Controller
 @RequestMapping(value = "/hotel",produces = {"application/json;charset=UTF-8"} )
 public class HotelController {

@@ -6,9 +6,7 @@ import cn.tmp.vo.VoAttraction;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface AttractionService {
     List<Attraction> list(Page page);
 

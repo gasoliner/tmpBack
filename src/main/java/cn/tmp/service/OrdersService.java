@@ -6,9 +6,7 @@ import cn.tmp.vo.VoOrders;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface OrdersService {
     List<Orders> list(Page page);
     int insert(Orders record);

@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by Ww on 2018/5/20.
- */
+
 @Controller
 @RequestMapping(value = "/login",produces = {"application/json;charset=UTF-8"} )
 public class LoginController {

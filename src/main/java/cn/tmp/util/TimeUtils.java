@@ -3,9 +3,7 @@ package cn.tmp.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Ww on 2018/3/4.
- */
+
 public class TimeUtils {
     public static String dateToString(Date time){
         SimpleDateFormat formatter;

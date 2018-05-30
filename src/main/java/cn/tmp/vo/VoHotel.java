@@ -2,9 +2,7 @@ package cn.tmp.vo;
 
 import cn.tmp.po.Hotel;
 
-/**
- * Created by cqx on 2018/5/15.
- */
+
 public class VoHotel extends Hotel {
 
     private String voImg;

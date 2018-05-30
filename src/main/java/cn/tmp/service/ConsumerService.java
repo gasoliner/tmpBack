@@ -5,9 +5,7 @@ import cn.tmp.po.Page;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface ConsumerService {
     List<Consumer> list(Page page);
 

@@ -6,9 +6,7 @@ import cn.tmp.vo.VoSpecial;
 
 import java.util.List;
 
-/**
- * Created by Ww on 2018/5/11.
- */
+
 public interface SpecialService {
     List<Special> list(Page page);
 
