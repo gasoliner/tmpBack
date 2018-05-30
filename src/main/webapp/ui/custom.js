@@ -177,6 +177,14 @@ function saveRegion() {
         }
     })
 }
+function showRegion() {
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#showRegionDialog").dialog("open").dialog("setTitle",row.title);
+        $("#name_content").html(row.name);
+        $("#var_content").html(row.var);
+    }
+}
 
 function newAttraction() {
     $("#fm").form("clear");
