@@ -35,9 +35,11 @@ public class LoginController {
             currentUser.login(token);
             User user = userService.selectByPrimaryKey(Integer.parseInt(name));
             request.getSession().setAttribute("user",user);
+            request.getSession().removeAttribute("login_error_info");
             response.sendRedirect("/");
         } catch (Exception e) {
             e.printStackTrace();
+            request.getSession().setAttribute("login_error_info","用户名或者密码错误，请检查后再试");
             response.sendRedirect("/login_ui");
         }
         return;

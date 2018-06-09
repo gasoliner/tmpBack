@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="/ui/login/css/style.css" media="screen" type="text/css" />
  </head>
  <body> 
-  <div id="window" style=""> 
-   <div class="page page-front"> 
+  <div id="window" style="">
+   <div class="page page-front">
     <div class="page-content">
      <form method="post" action="/login/login">
-     <div class="input-row"> 
+     <div class="input-row">
       <label class="label fadeIn">账号</label>
       <input id="name" name="name" type="text" class="input fadeIn" />
      </div> 
@@ -30,6 +30,7 @@
         <div class="ball"></div>
        </div>
       </button>
+      <div style="color: #f9fffe;margin: 10px">${login_error_info}</div>
      </div>
      </form>
     </div> 
