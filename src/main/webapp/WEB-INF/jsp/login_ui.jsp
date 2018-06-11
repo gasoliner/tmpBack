@@ -32,6 +32,9 @@
       </button>
       <div style="color: #f9fffe;margin: 10px">${login_error_info}</div>
      </div>
+      <%
+       request.getSession().removeAttribute("login_error_info");
+      %>
      </form>
     </div> 
    </div> 
