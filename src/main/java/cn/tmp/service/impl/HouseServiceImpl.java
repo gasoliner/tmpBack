@@ -62,8 +62,10 @@ public class HouseServiceImpl implements HouseService {
         for (House house:
                 list) {
             VoHouse voHouse = new VoHouse(house);
-            voHouse.setVoHid(hotelService.selectByPrimaryKey(voHouse.getHid()).getName());
-            voHouse.setVoImg("<a href = \"#\" onclick=\"showHousePic('" + voHouse.getHoid() + "')\">查看图片</a>");
+            voHouse.setVoHid(hotelService.selectByPrimaryKey(voHouse.getHid())
+                    .getName());
+            voHouse.setVoImg("<a href = \"#\" onclick=\"showHousePic('"
+                    + voHouse.getHoid() + "')\">查看图片</a>");
             list1.add(voHouse);
         }
         return list1;

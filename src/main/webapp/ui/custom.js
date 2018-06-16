@@ -511,3 +511,13 @@ function destroyConsumer() {
         })
     }
 }
+function saveConsumer() {
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#ConsumerDialog").dialog("close");
+            $('#dg').datagrid("reload");
+        }
+    })
+}
